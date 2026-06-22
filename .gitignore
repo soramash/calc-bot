@@ -141,3 +141,12 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 .vite/
+
+# Project-specific (Cloudflare Workers, Slack)
+.DS_Store
+.dev.vars
+.wrangler/
+
+# Unrelated content sitting in the same workspace folder
+.kiro/
+claude-code/

@@ -1,0 +1,10 @@
+{
+  "name": "calc-bot",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-06-21",
+  "observability": {
+    "enabled": true
+  }
+  // Secrets:
+  //   wrangler secret put SLACK_SIGNING_SECRET
+}

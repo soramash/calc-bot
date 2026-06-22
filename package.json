@@ -1,0 +1,22 @@
+{
+  "name": "calc-bot",
+  "version": "0.1.0",
+  "description": "Slack 計算 Bot /calc — 四則演算と指数計算 (^) を扱うスラッシュコマンド",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "expr-eval": "2.0.2"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^4.20250604.0",
+    "typescript": "^5.5.0",
+    "vitest": "^3.0.0",
+    "wrangler": "^4.0.0"
+  }
+}
