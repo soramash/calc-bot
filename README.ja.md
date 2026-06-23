@@ -112,10 +112,20 @@ https://calc-bot.<your-subdomain>.workers.dev/slack/calc
 - 文字ホワイトリスト + 識別子混入検出 + 指数値リテラル制限 (絶対値 ≤ 100) + 結果範囲制限 (`Number.MAX_SAFE_INTEGER`) で多段ガード
 - Slack 署名検証は HMAC-SHA256 + 5 分の timestamp tolerance + constant-time 比較
 
-### Roadmap (Phase 2)
+### Roadmap
 
-- Block Kit のチャンネル共有ボタン (現状は ephemeral のみ。`PLAN.md` の Decision Q4 D 参照)
-- BigInt 対応や桁区切り表示の検討 (現状は `Number.MAX_SAFE_INTEGER` 超過でエラー)
+#### Phase 2 — チャンネル共有
+
+現在スコープイン中の機能。Decision Q4 D と `PLAN.md` の `P2-Q*` 行を参照。
+
+- ephemeral 結果に Block Kit の「チャンネルに共有」ボタンを追加
+- 押下するとチャンネルに `in_channel` で同じ計算結果を投稿し、元の ephemeral は `replace_original: true` で `✅ Shared to #channel` に差し替え
+- ボタンの `value` に元入力と結果を埋め込む stateless 構成（KV 不要）
+
+#### Phase 3 — 数値範囲の拡張 (先送り)
+
+- BigInt 対応と桁区切り表示
+- 現状の上限は `Number.MAX_SAFE_INTEGER` (整数で約 16 桁)。12 桁までは問題なく扱えるため緊急性は低く、Decision P2-Q1 A で Phase 2 からは明示的に除外
 
 ## Project layout
 
