@@ -10,7 +10,7 @@ features:
     - command: /calc
       # Replace this URL with the Workers URL from `wrangler deploy`,
       # e.g. https://calc-bot.<your-subdomain>.workers.dev/slack/calc
-      url: https://REPLACE_ME.workers.dev/slack/calc
+      url: https://calc-bot.soracom-dev.workers.dev/slack/calc
       description: Evaluate an expression (+, -, *, /, parentheses, decimals, ^)
       usage_hint: (1,000 + 500) * 2^3
       should_escape: false
@@ -19,8 +19,13 @@ oauth_config:
     bot:
       - commands
 settings:
+  # Phase 2 (Decision P2-Q3 C / P2-Q4 A): Block Kit「チャンネルに共有」ボタンの押下を
+  # Worker 側 (`/slack/interactive`) で受けるためインタラクティブを有効化。
+  # request_url は Workers URL に合わせて差し替えてください
+  # (例: https://calc-bot.<your-subdomain>.workers.dev/slack/interactive)。
   interactivity:
-    is_enabled: false
+    is_enabled: true
+    request_url: https://calc-bot.soracom-dev.workers.dev/slack/interactive
   org_deploy_enabled: false
   socket_mode_enabled: false
   token_rotation_enabled: false

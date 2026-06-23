@@ -110,10 +110,20 @@ See the [Workers limits](https://developers.cloudflare.com/workers/platform/limi
 - Multiple guards: character whitelist, unknown-symbol detection, literal-exponent absolute-value cap (≤ 100), and result range cap (`Number.MAX_SAFE_INTEGER`).
 - Slack request verification uses HMAC-SHA256 with a 5-minute timestamp tolerance and constant-time comparison.
 
-### Roadmap (Phase 2)
+### Roadmap
 
-- A "share to channel" Block Kit button (currently ephemeral only; see Decision Q4 D in `PLAN.md`).
-- BigInt support and thousands-separator output formatting (currently any value beyond `Number.MAX_SAFE_INTEGER` is rejected).
+#### Phase 2 — share to channel
+
+The currently scoped feature. See Decision Q4 D and the `P2-Q*` rows in `PLAN.md`.
+
+- A "share to channel" Block Kit button on the ephemeral result.
+- Pressing the button posts the same calculation as an `in_channel` message and replaces the ephemeral with `✅ Shared to #channel` (`replace_original: true`).
+- Stateless: the button carries the original input and result in its `value`, so no KV is required.
+
+#### Phase 3 — wider numeric range (deferred)
+
+- BigInt support and thousands-separator output formatting.
+- Current cap is `Number.MAX_SAFE_INTEGER` (≈ 16-digit integers). 12-digit values pass cleanly today, so this work is not blocking and was explicitly excluded from Phase 2 (Decision P2-Q1 A).
 
 ## Project layout
 
